@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body bgcolor="cyan">
+    <!-- <h3>Arshad</h3> -->
+    <ul>
+        {% for TodoItem in All_items %}
+        <li>{{ TodoItem.content }}
+            <form action="/deleteTodo/{{TodoItem.id}}/" style="display: inline;"method="POST">{% csrf_token %}
+        
+            <input type="submit" value="Delete"/>
+
+        </form>
+        </li>
+        {% endfor %}
+    </ul>
+    <form action="/addTodo/" method="POST">{% csrf_token %}
+        <input type="text" name="content" >
+        <input type="submit" name="Add">
+
+    </form>
+
+</body>
+</html>
